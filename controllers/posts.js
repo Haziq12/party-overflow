@@ -3,6 +3,7 @@ import { Post } from '../models/post.js'
 
 
 const create = async (req, res) => {
+  console.log(req.body)
   try {
     req.body.added_by = req.user.profile
     const post = await new Post(req.body)
@@ -19,8 +20,4 @@ const create = async (req, res) => {
 
 export {
    create,
-}
-
-export {
-
 }
