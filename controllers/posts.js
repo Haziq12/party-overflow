@@ -82,11 +82,27 @@ const createComment = async (req, res) => {
   }
 }
 
+const markCommentAsSolution = async (req, res) => {
+  try {
+    const updatedPost = await Post.findByIdAndUpdate(req.params.postId)
+    const idx = updatedPost.comments.findIndex(
+      (comment) => comment._id.equals(req.params.commentId)
+    )
+    updatedPost.is_resolved = true
+    updatedPost.comments[idx].is_solution = true
+    await updatedPost.save()
+    return res.status(200).json(updatedPost)
+  } catch(err) {
+    res.status(500).json(err)
+  }
+}
+
 export {
    create,
    index,
    show,
    update,
    deletePost as delete,
-   createComment
+   createComment,
+   markCommentAsSolution
 }
