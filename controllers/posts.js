@@ -32,7 +32,7 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   console.log('req.body: ', req.body)
   console.log('req.params: ', req.params)
-  console.log('req: ', req) 
+  // console.log('req: ', req) 
   try {
     const post = await Post.findById(req.params.id)
       .populate('added_by')
@@ -43,8 +43,23 @@ const show = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try{
+    const updateData = { is_resolved: true }
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    )
+    return res.status(200).json(updatedPost)
+  } catch(err) {
+    return res.status(500).json(err) 
+  }
+}
+
 export {
    create,
    index,
-   show
+   show,
+   update
 }
