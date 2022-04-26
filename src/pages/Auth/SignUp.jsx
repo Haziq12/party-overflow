@@ -1,5 +1,7 @@
 import React from 'react'
 import '../../styles/Auth.css'
+import { signup } from '../../services/authService'
+import React, { useState } from 'react '
 
 // Assets
 import cat from '../../assets/avatars/cat.png' 
@@ -8,6 +10,13 @@ import cat from '../../assets/avatars/cat.png'
 
 
 const SignUp = (props) => {
+  const [msg, setMsg] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    avatar: cat
+    })
 
   return (
     <div className="signup-page">
