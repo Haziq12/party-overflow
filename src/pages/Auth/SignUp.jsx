@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/Auth.css'
 import { signup } from '../../services/authService'
-import React, { useState } from 'react '
+import { useState } from 'react'
 
 // Assets
 import cat from '../../assets/avatars/cat.png' 
@@ -20,27 +20,49 @@ const SignUp = (props) => {
 
   return (
     <div className="signup-page">
-
-      <div className='left-container'>
-
-        <div className='form-container'>
+      <div className="left-container">
+        <div className="form-container">
           <div className="title-container">
             <h1>Create an Account</h1>
-						<h3>Social media for developers</h3>
+            <h3>Social media for developers</h3>
           </div>
           <form className="register-form">
-            Inputs Here
+            <input
+              required
+              name="name"
+              type="text"
+              autoComplete="off"
+              placeholder="Username"
+            />
+            <input
+              required
+              name="email"
+              type="email"
+              autoComplete="off"
+              placeholder="Email"
+            />
+            <input
+              required
+              name="password"
+              type="password"
+              autoComplete="off"
+              placeholder="Password"
+            />
+
+            <button autoComplete="off" id="avatar-button" type="button">
+              Select Avatar
+            </button>
+
+            <button autoComplete="off" id="submit-button" type="submit">
+              SIGN UP
+            </button>
           </form>
         </div>
-
       </div>
 
-      <div className="right-container">
-        Animation Here
-      </div>
-
+      <div className="right-container">Animation Here</div>
     </div>
-  )
+  );
 }
 
 export default SignUp
