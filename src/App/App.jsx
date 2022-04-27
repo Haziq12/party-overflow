@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav/Nav'
 import SignIn from '../pages/Auth/SignIn'
 import SignUp from '../pages/Auth/SignUp'
+import PostList from '../pages/PostList'
 //Services
 import { getUser, logout } from '../services/authService'
 
@@ -34,7 +35,7 @@ const App = () => {
         <Route path='/' element={<h1>Landing</h1>} />
         <Route path='/signin' element={<SignIn handleSignupOrLogin={handleSignupOrLogin}/>} />
         <Route path='/signup' element={<SignUp handleSignupOrLogin={handleSignupOrLogin} />} />
-        <Route path='/posts' element={<h1>Posts</h1>} />
+        <Route path='/posts' element={<PostList />} />
 
       </Routes>
     </div>
