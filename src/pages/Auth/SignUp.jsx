@@ -13,12 +13,17 @@ import cat from '../../assets/avatars/cat.png'
 const SignUp = (props) => {
   const navigate = useNavigate()
   const [msg, setMsg] = useState('')
+  const [popup, setPopup] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     avatar: cat
     })
+
+    const handlePopup = () => {
+      setPopup(!popup)
+    }
 
     const handleChange = (e) => {
       setMsg('')
@@ -73,7 +78,7 @@ const SignUp = (props) => {
               value={formData.password}
             />
 
-            <button autoComplete="off" id="avatar-button" type="button">
+            <button autoComplete="off" id="avatar-button" type="button" onClick={handlePopup}>
               Select Avatar
             </button>
 
