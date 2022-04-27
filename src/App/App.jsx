@@ -9,6 +9,13 @@ import { getUser, logout } from '../services/authService'
 //Pages + Components
 
 const App = () => {
+  const navigate = useNavigate()
+  const [user, setUser] = useState(getUser())
+
+  const handleSignupOrLogin = async () => {
+    const currentUser = getUser()
+    setUser(currentUser)
+  }
 
   return (
     <div className="App">
