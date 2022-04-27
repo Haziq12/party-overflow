@@ -3,6 +3,7 @@ import '../../styles/Auth.css'
 import { signup } from '../../services/authService'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AvatarSelection from './AvatarSelection'
 
 // Assets
 import cat from '../../assets/avatars/cat.png' 
@@ -43,6 +44,12 @@ const SignUp = (props) => {
 
   return (
     <div className="signup-page">
+      {popup && 
+        <AvatarSelection 
+        formData={formData} 
+        handleChange={handleChange} 
+        handlePopup={handlePopup} />
+      }
       <div className="left-container">
         <div className="form-container">
           <div className="title-container">
