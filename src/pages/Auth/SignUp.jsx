@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/Auth.css'
 import { signup } from '../../services/authService'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import AvatarSelection from './AvatarSelection'
 
 // Assets
@@ -54,7 +54,10 @@ const SignUp = (props) => {
         <div className="form-container">
           <div className="title-container">
             <h1>Create an Account</h1>
-            <h3>Social media for developers</h3>
+            {msg
+              ? <h3>{msg}</h3>
+              : <h3>Social media for developers</h3>
+            }
           </div>
           <form className="register-form" onSubmit={handleSubmit}>
             <input
@@ -93,6 +96,12 @@ const SignUp = (props) => {
               SIGN UP
             </button>
           </form>
+          <div className="redirect-container">
+            <p>Already have an account?</p>
+            <Link className="redirect-link" to="/signin">
+	            Sign In
+            </Link>
+          </div>
         </div>
       </div>
 
