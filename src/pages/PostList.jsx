@@ -8,6 +8,15 @@ import { getAllPosts } from '../services/postService'
 
 
 const PostList = () => {
+  const [posts, setPost] = useState([])
+  
+  useEfect (() => {
+    const fetchAllPosts = async () => {
+      const postData = await getAllPosts()
+      console.log(postData)
+    }
+    fetchAllPosts()
+  }, [])
 
   return (
     <div className="layout">
