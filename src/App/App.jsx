@@ -1,8 +1,10 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav/Nav'
 import SignUp from '../pages/Auth/SignUp'
 //Services
+import { getUser, logout } from '../services/authService'
 
 //Pages + Components
 
