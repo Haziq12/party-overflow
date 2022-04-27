@@ -4,6 +4,8 @@ import { signup } from '../../services/authService'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import AvatarSelection from './AvatarSelection'
+import Animation from '../../components/misc/Animation'
+import coder from '../../assets/animation/coder.json'
 
 // Assets
 import cat from '../../assets/avatars/cat.png' 
@@ -12,52 +14,50 @@ import cat from '../../assets/avatars/cat.png'
 
 
 const SignUp = (props) => {
-  const navigate = useNavigate()
-  const [msg, setMsg] = useState('')
-  const [popup, setPopup] = useState(false)
+  const navigate = useNavigate();
+  const [msg, setMsg] = useState("");
+  const [popup, setPopup] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    avatar: cat
-    })
+    name: "",
+    email: "",
+    password: "",
+    avatar: cat,
+  });
 
-    const handlePopup = () => {
-      setPopup(!popup)
-    }
+  const handlePopup = () => {
+    setPopup(!popup);
+  };
 
-    const handleChange = (e) => {
-      setMsg('')
-      setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+  const handleChange = (e) => {
+    setMsg("");
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await signup(formData)
-      props.handleSignupOrLogin()
-      navigate('/posts')
+      await signup(formData);
+      props.handleSignupOrLogin();
+      navigate("/posts");
     } catch (error) {
-      setMsg(error.message) 
+      setMsg(error.message);
     }
-  }
+  };
 
   return (
     <div className="signup-page">
-      {popup && 
-        <AvatarSelection 
-        formData={formData} 
-        handleChange={handleChange} 
-        handlePopup={handlePopup} />
-      }
+      {popup && (
+        <AvatarSelection
+          formData={formData}
+          handleChange={handleChange}
+          handlePopup={handlePopup}
+        />
+      )}
       <div className="left-container">
         <div className="form-container">
           <div className="title-container">
             <h1>Create an Account</h1>
-            {msg
-              ? <h3>{msg}</h3>
-              : <h3>Social media for developers</h3>
-            }
+            {msg ? <h3>{msg}</h3> : <h3>Social media for developers</h3>}
           </div>
           <form className="register-form" onSubmit={handleSubmit}>
             <input
@@ -88,7 +88,12 @@ const SignUp = (props) => {
               value={formData.password}
             />
 
-            <button autoComplete="off" id="avatar-button" type="button" onClick={handlePopup}>
+            <button
+              autoComplete="off"
+              id="avatar-button"
+              type="button"
+              onClick={handlePopup}
+            >
               Select Avatar
             </button>
 
@@ -99,15 +104,15 @@ const SignUp = (props) => {
           <div className="redirect-container">
             <p>Already have an account?</p>
             <Link className="redirect-link" to="/signin">
-	            Sign In
+              Sign In
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="right-container">Animation Here</div>
+      <div className="right-container"><Animation animData={coder}></Animation></div>
     </div>
   );
-}
+};
 
-export default SignUp
+export default SignUp;
