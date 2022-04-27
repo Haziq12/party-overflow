@@ -2,6 +2,7 @@ import React from 'react'
 import '../../styles/Auth.css'
 import { signup } from '../../services/authService'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Assets
 import cat from '../../assets/avatars/cat.png' 
@@ -10,6 +11,7 @@ import cat from '../../assets/avatars/cat.png'
 
 
 const SignUp = (props) => {
+  const navigate = useNavigate()
   const [msg, setMsg] = useState('')
   const [formData, setFormData] = useState({
     name: '',
@@ -26,7 +28,9 @@ const SignUp = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log('it works')
+      await signup(formData)
+      props.handleSignupOrLogin()
+      navigate('/posts')
     } catch (error) {
       setMsg(error.message) 
     }
