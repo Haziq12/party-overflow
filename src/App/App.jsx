@@ -17,6 +17,12 @@ const App = () => {
     setUser(currentUser)
   }
 
+  const handleLogout = () => {
+    logout()
+    setUser(null)
+    navigate('/')
+  }
+
   return (
     <div className="App">
 
