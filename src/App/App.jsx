@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import Nav from '../components/Nav/Nav'
-import SignIn from '../pages/Auth/SignIn'
-import SignUp from '../pages/Auth/SignUp'
-import PostList from '../pages/PostList'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+
 //Services
 import { getUser, logout } from '../services/authService'
 
 //Pages + Components
+import Nav from '../components/Nav/Nav'
+import SignIn from '../pages/Auth/SignIn'
+import SignUp from '../pages/Auth/SignUp'
+import PostList from '../pages/PostList'
+import CreatePost from '../pages/CreatePost/CreatePost'
 
 const App = () => {
   const navigate = useNavigate()
@@ -36,6 +38,7 @@ const App = () => {
         <Route path='/signin' element={<SignIn handleSignupOrLogin={handleSignupOrLogin}/>} />
         <Route path='/signup' element={<SignUp handleSignupOrLogin={handleSignupOrLogin} />} />
         <Route path='/posts' element={<PostList />} />
+        <Route path='/new' element={user ? <CreatePost user={user} /> : <Navigate to='/signin' /> } />
 
       </Routes>
     </div>
