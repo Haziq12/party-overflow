@@ -37,8 +37,9 @@ const App = () => {
         <Route path='/' element={<h1>Landing</h1>} />
         <Route path='/signin' element={<SignIn handleSignupOrLogin={handleSignupOrLogin}/>} />
         <Route path='/signup' element={<SignUp handleSignupOrLogin={handleSignupOrLogin} />} />
-        <Route path='/posts' element={<PostList />} />
+        <Route path='/posts' element={<PostList user={user}/>} />
         <Route path='/new' element={user ? <CreatePost user={user} /> : <Navigate to='/signin' /> } />
+
 
       </Routes>
     </div>
