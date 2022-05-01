@@ -3,10 +3,18 @@ import '../../styles/Card.css'
 
 const PostActions = (props) => {
 
-  return (
-    <div className="interactions">
+  const authorId = props.post.added_by?._id ? props.post.added_by._id : props.post.added_by
+  const isAuthor = props.user?.profile === authorId
 
-    </div>
+  return (
+    isAuthor &&
+    <div className="interactions">
+      {!props.post.is_resolved &&
+        <button
+          onClick={() => props.markPostResolved(props.post._id)}
+        >Resolve</button>
+      }
+    </div >
   )
 }
 
