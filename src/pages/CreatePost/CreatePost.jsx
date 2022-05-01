@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../../styles/Create.css'
 
 // Components
 import Header from '../../components/misc/Header'
