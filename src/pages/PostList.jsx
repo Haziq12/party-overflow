@@ -43,7 +43,7 @@ const PostList = (props) => {
       <Header />
       <h1>Posts!</h1>
       {posts?.map((post) => (
-        <PostCard post={post} key={post._id} user={props.user} markPostResolved={markPostResolved} />
+        <PostCard post={post} key={post._id} user={props.user} markPostResolved={markPostResolved} handleDeletePost={handleDeletePost}/>
       ))}
     </div>
   )

@@ -14,6 +14,9 @@ const PostActions = (props) => {
           onClick={() => props.markPostResolved(props.post._id)}
         >Resolve</button>
       }
+      <button
+        onClick={() => props.handleDeletePost(props.post._id)}
+      >Delete</button>
     </div >
   )
 }
