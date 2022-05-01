@@ -34,10 +34,18 @@ const CreatePost = (props) => {
 
   return (
     <div className="layout">
-      <Header />
-      <PostForm />
+      <Header title="Create Post" />
+      <PostForm
+        codeblock={codeblock}
+        setCodeblock={setCodeblock}
+        toggleCode={toggleCode}
+        setToggleCode={setToggleCode}
+        question={question}
+        setQuestion={setQuestion}
+        handleCreatePost={handleCreatePost}
+      />
     </div>
-  )
+  );
 }
 
 export default CreatePost
