@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 // Services
-import { getAllPosts } from '../services/postService'
+import { getAllPosts, updatePost } from '../services/postService'
 
 // Components
 import PostCard from '../components/Post/PostCard'
@@ -19,6 +19,15 @@ const PostList = () => {
     fetchAllPosts()
     return () => { setPosts([]) } 
   }, [])
+
+  const markPostResolved = async (postId) => {
+    try {
+      const updatedPost = await updatePost(postId)
+			setPosts(posts.map((post) => (post._id === postId ? updatedPost : post)))
+    } catch (error) {
+      throw error
+    }
+  }
 
   return (
     <div className="layout">
