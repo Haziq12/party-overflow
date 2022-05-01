@@ -29,6 +29,15 @@ const PostList = (props) => {
     }
   }
 
+  const handleDeletePost = async (postId) => {
+    try {
+      await deletePost(postId)
+      setPosts(posts.filter((post) => post._id !== postId))
+    } catch (error) {
+      throw error
+    }
+  }
+
   return (
     <div className="layout">
       <Header />
