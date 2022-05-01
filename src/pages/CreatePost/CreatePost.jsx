@@ -11,7 +11,16 @@ import PostForm from './PostForm'
 const CreatePost = (props) => {
 
   const navigate = useNavigate()
-  
+  const [toggleCode, setToggleCode] = useState(false)
+  const [question, setQuestion] = useState('')
+  const [codeblock, setCodeblock] = useState('')
+
+  const formData = {
+    question: question, 
+    codeblock: codeblock, 
+    added_by: props.user.profile 
+  }
+
   const handleCreatePost = async (e) => {
     e.preventDefault()
     try {
