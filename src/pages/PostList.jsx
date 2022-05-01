@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 // Services
-import { getAllPosts, updatePost } from '../services/postService'
+import { getAllPosts, updatePost, deletePost } from '../services/postService'
 
 // Components
 import PostCard from '../components/Post/PostCard'
