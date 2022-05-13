@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../styles/Card.css'
 import PostActions from './PostActions';
+import UserCard from '../misc/UserCard'
+import Codeblock from '../Code/Codeblock'
 
 const PostCard = (props) => {
   return (
