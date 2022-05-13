@@ -10,6 +10,7 @@ import Nav from '../components/Nav/Nav'
 import SignIn from '../pages/Auth/SignIn'
 import SignUp from '../pages/Auth/SignUp'
 import PostList from '../pages/PostList'
+import PostDetails from '../pages/PostDetails'
 import CreatePost from '../pages/CreatePost/CreatePost'
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
         <Route path='/signup' element={<SignUp handleSignupOrLogin={handleSignupOrLogin} />} />
         <Route path='/posts' element={<PostList user={user}/>} />
         <Route path='/new' element={user ? <CreatePost user={user} /> : <Navigate to='/signin' /> } />
+        <Route path='/posts/:id' element={<PostDetails user={user} />} />
 
 
       </Routes>
