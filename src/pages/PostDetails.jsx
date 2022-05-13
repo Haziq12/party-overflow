@@ -13,11 +13,15 @@ const PostDetails = (props) => {
 	const navigate = useNavigate()
   console.log('Post Details Params:', id)
 
+  const [post, setPost] = useState()
+  const [comments, setComments] = useState([])
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const postData = await postService.getPostById(id)
-        console.log('Post Details data', postData)
+        setPost(postData)
+        setComments(postData.comments)
       } catch (error) {
         throw error
       }
