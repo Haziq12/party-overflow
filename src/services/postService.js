@@ -54,3 +54,13 @@ export const deletePost = async (postId) => {
     throw error
   }
 }
+
+export const getPostById = async (postId) => {
+  try {
+    const res = await fetch(`${BASE_URL}${postId}`)
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
