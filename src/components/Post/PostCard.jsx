@@ -5,9 +5,11 @@ import UserCard from '../misc/UserCard'
 import Codeblock from '../Code/Codeblock'
 
 const PostCard = (props) => {
+  console.log(props.post)
   return (
     <div className="post-card">
       <div className="card-header">
+        <UserCard profile={props.post.added_by}/>
         <PostActions {...props}/>
       </div>
 
