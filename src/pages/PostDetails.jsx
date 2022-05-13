@@ -13,6 +13,18 @@ const PostDetails = (props) => {
 	const navigate = useNavigate()
   console.log('Post Details Params:', id)
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const postData = await postService.getPostById(id)
+        console.log('Post Details data', postData)
+      } catch (error) {
+        throw error
+      }
+    }
+    fetchPost()
+  }, [id]) 
+
   return (
     <div className="layout">
       <Header title="Post Details" />
