@@ -50,7 +50,7 @@ const update = async (req, res) => {
       req.params.id,
       updateData,
       { new: true }
-    )
+    ).populate('added_by')
     return res.status(200).json(updatedPost)
   } catch(err) {
     return res.status(500).json(err) 
@@ -76,6 +76,8 @@ const createComment = async (req, res) => {
     post.comments.push(req.body)
     await post.save()
     const newComment = post.comments[post.comments.length - 1]
+    const profile = await Profile.findById(req.user.profile)
+    newComment.commenter = profile
     return res.status(201).json(newComment)
   } catch (err) {
     res.status(500).json(err)
@@ -85,6 +87,8 @@ const createComment = async (req, res) => {
 const markCommentAsSolution = async (req, res) => {
   try {
     const updatedPost = await Post.findByIdAndUpdate(req.params.postId)
+    .populate('added_by')
+    .populate('comments.commenter')
     const idx = updatedPost.comments.findIndex(
       (comment) => comment._id.equals(req.params.commentId)
     )

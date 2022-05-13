@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../../styles/Card.css'
 import PostActions from './PostActions';
 import UserCard from '../misc/UserCard'
@@ -14,7 +15,7 @@ const PostCard = (props) => {
       </div>
 
       <div className="question-container">
-        <p>{props.post.question}</p>
+        <p> {props.post.is_resolved && '[RESOLVED]'} {props.post.question}</p>
       </div>
 
       <div className="code-container">
@@ -24,6 +25,9 @@ const PostCard = (props) => {
       </div>
 
       <div className="comment-link"></div>
+      <div className="comment-link">
+		    <Link to={`/posts/${props.post._id}`}>View Comments</Link>
+      </div>
     </div>
   );
 };
